@@ -1,0 +1,70 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - php: '8.2'
+            illuminate: '^12.0'
+            testbench: '^10.0'
+            phpunit: '^11.5'
+          - php: '8.3'
+            illuminate: '^12.0'
+            testbench: '^10.0'
+            phpunit: '^11.5'
+          - php: '8.4'
+            illuminate: '^12.0'
+            testbench: '^10.0'
+            phpunit: '^11.5'
+          - php: '8.3'
+            illuminate: '^13.0'
+            testbench: '^11.0'
+            phpunit: '^12.0'
+          - php: '8.4'
+            illuminate: '^13.0'
+            testbench: '^11.0'
+            phpunit: '^12.0'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+          extensions: mbstring, sqlite3
+
+      - name: Pin Laravel test dependencies
+        run: |
+          composer require \
+            illuminate/console:${{ matrix.illuminate }} \
+            illuminate/database:${{ matrix.illuminate }} \
+            illuminate/events:${{ matrix.illuminate }} \
+            illuminate/support:${{ matrix.illuminate }} \
+            orchestra/testbench:${{ matrix.testbench }} \
+            phpunit/phpunit:${{ matrix.phpunit }} \
+            --no-update --no-interaction
+
+      - name: Install dependencies
+        run: composer update --prefer-dist --no-interaction --no-progress --with-all-dependencies
+
+      - name: Validate Composer metadata
+        run: composer validate --strict
+
+      - name: Check code style
+        run: vendor/bin/pint --test
+
+      - name: Run static analysis
+        run: vendor/bin/phpstan analyse --no-progress
+
+      - name: Run tests
+        run: vendor/bin/phpunit

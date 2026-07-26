@@ -1,0 +1,71 @@
+{
+    "name": "eloquent-works/rating-kit",
+    "description": "A comprehensive Laravel rating engine for players, teams, multiplayer competitions, seasons, leaderboards, rating history, and pluggable rating algorithms.",
+    "keywords": [
+        "laravel",
+        "rating",
+        "elo",
+        "glicko",
+        "glicko-2",
+        "openskill",
+        "leaderboard",
+        "matchmaking",
+        "teams"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Eloquent Works"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "illuminate/console": "^12.0 || ^13.0",
+        "illuminate/database": "^12.0 || ^13.0",
+        "illuminate/events": "^12.0 || ^13.0",
+        "illuminate/support": "^12.0 || ^13.0"
+    },
+    "require-dev": {
+        "larastan/larastan": "^3.0",
+        "laravel/pint": "^1.0",
+        "mockery/mockery": "^1.6",
+        "orchestra/testbench": "^10.0 || ^11.0",
+        "phpunit/phpunit": "^11.5 || ^12.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "EloquentWorks\\RatingKit\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "EloquentWorks\\RatingKit\\RatingKitServiceProvider"
+            ],
+            "aliases": {
+                "RatingKit": "EloquentWorks\\RatingKit\\Facades\\RatingKit"
+            }
+        }
+    },
+    "scripts": {
+        "format": "pint",
+        "format:test": "pint --test",
+        "analyse": "phpstan analyse --memory-limit=1G",
+        "test": "phpunit",
+        "quality": [
+            "@format:test",
+            "@analyse",
+            "@test"
+        ]
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
