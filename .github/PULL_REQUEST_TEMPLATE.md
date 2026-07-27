@@ -1,17 +1,27 @@
-## Summary
+# Pull Request
 
-Describe the change and why it is needed.
+## Description
 
-## Testing
+Describe what this pull request changes.
 
-- [ ] `composer format:test`
-- [ ] `composer analyse`
-- [ ] `composer test`
+## Type of Change
 
-## Documentation
+- [ ] Bug fix
+- [ ] New feature
+- [ ] Documentation update
+- [ ] Refactor
+- [ ] Test update
+- [ ] Other
 
-- [ ] Documentation was updated when behavior or public APIs changed.
+## Checklist
 
-## Rating Math
+- [ ] I tested my changes
+- [ ] I ran `composer test`
+- [ ] I ran `composer format`
+- [ ] I ran `composer analyse`
+- [ ] I updated documentation if needed
+- [ ] My change has one clear purpose
 
-- [ ] Algorithm changes include deterministic tests and an explanation of the formula or source.
+## Related Issue
+
+Closes #

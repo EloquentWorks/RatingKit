@@ -26,6 +26,7 @@ use EloquentWorks\RatingKit\Models\RatingParticipant;
 use EloquentWorks\RatingKit\Models\RatingSeason;
 use EloquentWorks\RatingKit\Models\RatingTeam;
 use EloquentWorks\RatingKit\Support\AlgorithmRegistry;
+use EloquentWorks\RatingKit\Support\Math;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
@@ -229,7 +230,7 @@ class RatingKitManager
     /**
      * Convenience wrapper for one player against another.
      *
-     * @param array<string, mixed> $metadata
+     * @param  array<string, mixed>  $metadata
      */
     public function oneVsOne(
         Model $left,
@@ -264,9 +265,9 @@ class RatingKitManager
     /**
      * Convenience wrapper for any N-player team against another N-player team.
      *
-     * @param list<Model|Participant> $left
-     * @param list<Model|Participant> $right
-     * @param array<string, mixed> $metadata
+     * @param  list<Model|Participant>  $left
+     * @param  list<Model|Participant>  $right
+     * @param  array<string, mixed>  $metadata
      */
     public function teamVsTeam(
         array $left,
@@ -299,8 +300,8 @@ class RatingKitManager
     /**
      * Rate a free-for-all or ordered multiplayer result.
      *
-     * @param list<Model|Participant|array{participant: Model|Participant, rank: int, score?: float|null}> $placements
-     * @param array<string, mixed> $metadata
+     * @param  list<Model|Participant|array{participant: Model|Participant, rank: int, score?: float|null}>  $placements
+     * @param  array<string, mixed>  $metadata
      */
     public function freeForAll(
         array $placements,
@@ -386,7 +387,7 @@ class RatingKitManager
     /**
      * Return normalized estimated winning shares for two or more teams.
      *
-     * @param list<Team> $teams
+     * @param  list<Team>  $teams
      * @return list<array{team: int, rating: float, probability: float}>
      */
     public function predict(array $teams, ?string $pool = null, ?string $algorithm = null, ?int $seasonId = null): array
@@ -431,7 +432,7 @@ class RatingKitManager
     /**
      * Return a normalized match-balance score from 0.0 to 1.0.
      *
-     * @param list<Team> $teams
+     * @param  list<Team>  $teams
      */
     public function matchQuality(
         array $teams,
@@ -774,7 +775,7 @@ class RatingKitManager
             $before = $rating->rating;
             $minimum = config('rating-kit.rating_floor');
             $maximum = config('rating-kit.rating_ceiling');
-            $after = \EloquentWorks\RatingKit\Support\Math::clamp(
+            $after = Math::clamp(
                 $value,
                 $minimum !== null ? (float) $minimum : null,
                 $maximum !== null ? (float) $maximum : null,
@@ -894,7 +895,7 @@ class RatingKitManager
     }
 
     /**
-     * @param list<Team> $teams
+     * @param  list<Team>  $teams
      * @return list<Team>
      */
     protected function normalizeTeams(array $teams): array
@@ -969,7 +970,7 @@ class RatingKitManager
     }
 
     /**
-     * @param list<Team> $teams
+     * @param  list<Team>  $teams
      */
     protected function outcomeFor(Team $team, array $teams, int $minimumRank, int $firstPlaceCount): string
     {

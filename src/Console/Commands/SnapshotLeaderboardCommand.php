@@ -31,7 +31,7 @@ class SnapshotLeaderboardCommand extends Command
     /**
      * Execute the console command.
      *
-     * @param RatingKitManager $ratingKit The rating kit manager instance.
+     * @param  RatingKitManager  $ratingKit  The rating kit manager instance.
      * @return int Returns the exit status code.
      */
     public function handle(RatingKitManager $ratingKit): int

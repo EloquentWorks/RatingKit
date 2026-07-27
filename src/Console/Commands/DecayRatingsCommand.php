@@ -27,7 +27,7 @@ class DecayRatingsCommand extends Command
     /**
      * Handle the command execution.
      *
-     * @param RatingKitManager $ratingKit The rating kit manager instance.
+     * @param  RatingKitManager  $ratingKit  The rating kit manager instance.
      * @return int Returns the exit status code.
      */
     public function handle(RatingKitManager $ratingKit): int

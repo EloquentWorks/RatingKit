@@ -14,8 +14,8 @@ class MatchVoided
     /**
      * Create a new event instance.
      *
-     * @param RatingMatch $match The rating match that was voided
-     * @param string|null $reason Optional reason for voiding the match
+     * @param  RatingMatch  $match  The rating match that was voided
+     * @param  string|null  $reason  Optional reason for voiding the match
      */
     public function __construct(public RatingMatch $match, public ?string $reason = null) {}
 }

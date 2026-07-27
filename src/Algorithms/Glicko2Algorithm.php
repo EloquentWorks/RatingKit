@@ -15,16 +15,13 @@ use EloquentWorks\RatingKit\Support\Math;
  */
 class Glicko2Algorithm extends GlickoAlgorithm
 {
-    /**
-     * @return string
-     */
     public function key(): string
     {
         return 'glicko2';
     }
 
     /**
-     * @param list<array{rating: float, deviation: float, score: float}> $opponents
+     * @param  list<array{rating: float, deviation: float, score: float}>  $opponents
      */
     protected function rateCompetitor(CompetitorInput $competitor, array $opponents): RatingChange
     {
@@ -78,11 +75,10 @@ class Glicko2Algorithm extends GlickoAlgorithm
     /**
      * Calculate the new volatility for a competitor based on their performance.
      *
-     * @param float $phi The current deviation of the competitor.
-     * @param float $sigma The current volatility of the competitor.
-     * @param float $delta The change in rating based on performance against opponents.
-     * @param float $variance The variance calculated from opponents' ratings and scores.
-     *
+     * @param  float  $phi  The current deviation of the competitor.
+     * @param  float  $sigma  The current volatility of the competitor.
+     * @param  float  $delta  The change in rating based on performance against opponents.
+     * @param  float  $variance  The variance calculated from opponents' ratings and scores.
      * @return float The new volatility for the competitor.
      */
     protected function newVolatility(float $phi, float $sigma, float $delta, float $variance): float

@@ -11,8 +11,6 @@ class BradleyTerryAlgorithm extends EloAlgorithm
 {
     /**
      * Get the unique key for this algorithm.
-     *
-     * @return string
      */
     public function key(): string
     {

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Support\Carbon;
 
 /**
  * Represents a rating for a rateable model.
@@ -27,8 +28,8 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * @property int $losses
  * @property int $streak
  * @property bool $provisional
- * @property \Illuminate\Support\Carbon|null $last_competed_at
- * @property \Illuminate\Support\Carbon|null $decayed_at
+ * @property Carbon|null $last_competed_at
+ * @property Carbon|null $decayed_at
  * @property array<string, mixed>|null $metadata
  */
 class Rating extends Model
@@ -38,8 +39,6 @@ class Rating extends Model
 
     /**
      * Get the table name for the rating model.
-     *
-     * @return string
      */
     public function getTable(): string
     {
@@ -121,9 +120,7 @@ class Rating extends Model
     /**
      * Scope a query to only include ratings in a specific pool.
      *
-     * @param Builder<Rating> $query
-     * @param string $pool
-     * @return void
+     * @param  Builder<Rating>  $query
      */
     public function scopeInPool(Builder $query, string $pool): void
     {
@@ -133,9 +130,7 @@ class Rating extends Model
     /**
      * Scope a query to only include ratings using a specific algorithm.
      *
-     * @param Builder<Rating> $query
-     * @param string $algorithm
-     * @return void
+     * @param  Builder<Rating>  $query
      */
     public function scopeUsingAlgorithm(Builder $query, string $algorithm): void
     {
@@ -145,9 +140,7 @@ class Rating extends Model
     /**
      * Scope a query to only include ratings for a specific season.
      *
-     * @param Builder<Rating> $query
-     * @param int|null $seasonId
-     * @return void
+     * @param  Builder<Rating>  $query
      */
     public function scopeForSeason(Builder $query, ?int $seasonId): void
     {
@@ -157,8 +150,7 @@ class Rating extends Model
     /**
      * Scope a query to only include established ratings.
      *
-     * @param Builder<Rating> $query
-     * @return void
+     * @param  Builder<Rating>  $query
      */
     public function scopeEstablished(Builder $query): void
     {

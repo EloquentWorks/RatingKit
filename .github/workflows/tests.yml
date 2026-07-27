@@ -47,8 +47,14 @@ jobs:
         run: |
           composer require \
             illuminate/console:${{ matrix.illuminate }} \
+            illuminate/contracts:${{ matrix.illuminate }} \
             illuminate/database:${{ matrix.illuminate }} \
+            illuminate/encryption:${{ matrix.illuminate }} \
             illuminate/events:${{ matrix.illuminate }} \
+            illuminate/filesystem:${{ matrix.illuminate }} \
+            illuminate/http:${{ matrix.illuminate }} \
+            illuminate/notifications:${{ matrix.illuminate }} \
+            illuminate/routing:${{ matrix.illuminate }} \
             illuminate/support:${{ matrix.illuminate }} \
             orchestra/testbench:${{ matrix.testbench }} \
             phpunit/phpunit:${{ matrix.phpunit }} \
@@ -57,7 +63,7 @@ jobs:
       - name: Install dependencies
         run: composer update --prefer-dist --no-interaction --no-progress --with-all-dependencies
 
-      - name: Validate Composer metadata
+      - name: Validate composer.json
         run: composer validate --strict
 
       - name: Check code style

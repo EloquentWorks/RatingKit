@@ -17,9 +17,8 @@ final class Math
     /**
      * Computes the logistic function for a given difference and scale.
      *
-     * @param float $difference The difference value to compute the logistic function for.
-     * @param float $scale The scale factor for the logistic function (default is 400.0).
-     *
+     * @param  float  $difference  The difference value to compute the logistic function for.
+     * @param  float  $scale  The scale factor for the logistic function (default is 400.0).
      * @return float The result of the logistic function.
      */
     public static function logistic(float $difference, float $scale = 400.0): float
@@ -34,8 +33,7 @@ final class Math
     /**
      * Computes the cumulative distribution function (CDF) of the standard normal distribution for a given value.
      *
-     * @param float $value The value to compute the CDF for.
-     *
+     * @param  float  $value  The value to compute the CDF for.
      * @return float The result of the normal CDF.
      */
     public static function normalCdf(float $value): float
@@ -58,10 +56,9 @@ final class Math
     /**
      * Clamps a value between a minimum and maximum value.
      *
-     * @param float $value The value to clamp.
-     * @param float|null $minimum The minimum value (optional).
-     * @param float|null $maximum The maximum value (optional).
-     *
+     * @param  float  $value  The value to clamp.
+     * @param  float|null  $minimum  The minimum value (optional).
+     * @param  float|null  $maximum  The maximum value (optional).
      * @return float The clamped value.
      */
     public static function clamp(float $value, ?float $minimum = null, ?float $maximum = null): float

@@ -33,8 +33,6 @@ class RatingParticipant extends Model
 
     /**
      * Get the table name for the rating participant model.
-     *
-     * @return string
      */
     public function getTable(): string
     {

@@ -25,10 +25,10 @@ class EloAlgorithm extends AbstractPairwiseAlgorithm
     /**
      * Calculate the expected score for the left team based on their rating and the right team's rating.
      *
-     * @param float $leftRating The rating of the left team.
-     * @param float $rightRating The rating of the right team.
-     * @param TeamInput $left The input data for the left team.
-     * @param TeamInput $right The input data for the right team.
+     * @param  float  $leftRating  The rating of the left team.
+     * @param  float  $rightRating  The rating of the right team.
+     * @param  TeamInput  $left  The input data for the left team.
+     * @param  TeamInput  $right  The input data for the right team.
      * @return float The expected score for the left team (between 0 and 1).
      */
     protected function expected(float $leftRating, float $rightRating, TeamInput $left, TeamInput $right): float

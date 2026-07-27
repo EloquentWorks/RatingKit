@@ -5,7 +5,6 @@ namespace Tests\Feature;
 use EloquentWorks\RatingKit\Data\RecordMatch;
 use EloquentWorks\RatingKit\Data\Team;
 use EloquentWorks\RatingKit\Enums\MatchStatus;
-use EloquentWorks\RatingKit\Models\Rating;
 use EloquentWorks\RatingKit\Models\RatingMatch;
 use EloquentWorks\RatingKit\RatingKitManager;
 use Tests\Support\User;

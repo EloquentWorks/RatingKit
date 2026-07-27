@@ -14,9 +14,7 @@ class UnknownAlgorithm extends InvalidArgumentException
     /**
      * Create a new UnknownAlgorithm exception for the given algorithm name.
      *
-     * @param string $algorithm The name of the unregistered algorithm
-     *
-     * @return self
+     * @param  string  $algorithm  The name of the unregistered algorithm
      */
     public static function named(string $algorithm): self
     {

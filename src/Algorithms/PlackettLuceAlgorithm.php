@@ -2,7 +2,6 @@
 
 namespace EloquentWorks\RatingKit\Algorithms;
 
-use EloquentWorks\RatingKit\Data\CompetitorInput;
 use EloquentWorks\RatingKit\Data\MatchInput;
 use EloquentWorks\RatingKit\Data\RatingBatch;
 use EloquentWorks\RatingKit\Data\RatingChange;
@@ -28,11 +27,10 @@ class PlackettLuceAlgorithm extends AbstractPairwiseAlgorithm
     /**
      * Calculates the expected score for a team based on its rating and the opponent's rating.
      *
-     * @param float $leftRating The rating of the left team.
-     * @param float $rightRating The rating of the right team.
-     * @param TeamInput $left The left team input data.
-     * @param TeamInput $right The right team input data.
-     *
+     * @param  float  $leftRating  The rating of the left team.
+     * @param  float  $rightRating  The rating of the right team.
+     * @param  TeamInput  $left  The left team input data.
+     * @param  TeamInput  $right  The right team input data.
      * @return float The expected score for the left team.
      */
     protected function expected(float $leftRating, float $rightRating, TeamInput $left, TeamInput $right): float
@@ -43,8 +41,7 @@ class PlackettLuceAlgorithm extends AbstractPairwiseAlgorithm
     /**
      * Rates a match and returns the resulting rating changes for all competitors.
      *
-     * @param MatchInput $match The match input data.
-     *
+     * @param  MatchInput  $match  The match input data.
      * @return RatingBatch The batch of rating changes resulting from the match.
      */
     public function rate(MatchInput $match): RatingBatch

@@ -17,12 +17,12 @@ class AlgorithmRegistry
     /**
      * Create a new AlgorithmRegistry instance.
      *
-     * @param Container $container The container instance for resolving dependencies.
+     * @param  Container  $container  The container instance for resolving dependencies.
      */
     public function __construct(protected Container $container) {}
 
     /**
-     * @param class-string<RatingAlgorithm>|RatingAlgorithm|callable(Container, array<string, mixed>): RatingAlgorithm $algorithm
+     * @param  class-string<RatingAlgorithm>|RatingAlgorithm|callable(Container, array<string, mixed>): RatingAlgorithm  $algorithm
      */
     public function extend(string $key, string|RatingAlgorithm|callable $algorithm): void
     {
@@ -32,8 +32,7 @@ class AlgorithmRegistry
     /**
      * Resolve a rating algorithm by its key.
      *
-     * @param string|null $key The key of the rating algorithm to resolve. If null, the default algorithm will be used.
-     *
+     * @param  string|null  $key  The key of the rating algorithm to resolve. If null, the default algorithm will be used.
      * @return RatingAlgorithm Returns the resolved rating algorithm instance.
      *
      * @throws UnknownAlgorithm If the specified algorithm key is not registered or configured.
@@ -90,8 +89,7 @@ class AlgorithmRegistry
     /**
      * Get the options for a specific rating algorithm.
      *
-     * @param string|null $key The key of the rating algorithm. If null, the default algorithm will be used.
-     *
+     * @param  string|null  $key  The key of the rating algorithm. If null, the default algorithm will be used.
      * @return array<string, mixed> Returns an associative array of options for the specified algorithm.
      */
     public function options(?string $key = null): array

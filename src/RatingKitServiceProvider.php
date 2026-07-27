@@ -17,8 +17,6 @@ class RatingKitServiceProvider extends ServiceProvider
 {
     /**
      * Register any package services.
-     *
-     * @return void Returns nothing.
      */
     public function register(): void
     {
@@ -30,15 +28,13 @@ class RatingKitServiceProvider extends ServiceProvider
         $this->app->singleton(RatingKitManager::class, fn (Container $app): RatingKitManager => new RatingKitManager(
             $app->make(AlgorithmRegistry::class),
         ));
-        
+
         // Create an alias for the RatingKitManager in the service container
         $this->app->alias(RatingKitManager::class, 'rating-kit');
     }
 
     /**
      * Bootstrap any package services.
-     *
-     * @return void Returns nothing.
      */
     public function boot(): void
     {
@@ -55,11 +51,12 @@ class RatingKitServiceProvider extends ServiceProvider
             CloseSeasonCommand::class,
         ]);
 
-        // Publish the package's configuration file and migrations
+        // Publish the package's configuration file
         $this->publishes([
             __DIR__.'/../config/rating-kit.php' => config_path('rating-kit.php'),
         ], 'rating-kit-config');
-        ], 'rating-kit-config');
+
+        // Publish the package's migrations
         $this->publishesMigrations([
             __DIR__.'/../database/migrations' => database_path('migrations'),
         ], 'rating-kit-migrations');

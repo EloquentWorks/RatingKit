@@ -36,7 +36,7 @@ interface RatingAlgorithm
     /**
      * Rate a match and update player ratings based on the match input.
      *
-     * @param MatchInput $match The match input containing information about the match
+     * @param  MatchInput  $match  The match input containing information about the match
      * @return RatingBatch Returns a batch of updated player ratings after processing the match
      */
     public function rate(MatchInput $match): RatingBatch;

@@ -12,8 +12,8 @@ use Carbon\CarbonInterface;
 final readonly class RecordMatch
 {
     /**
-     * @param list<Team> $teams
-     * @param array<string, mixed> $metadata
+     * @param  list<Team>  $teams
+     * @param  array<string, mixed>  $metadata
      */
     public function __construct(
         public array $teams,

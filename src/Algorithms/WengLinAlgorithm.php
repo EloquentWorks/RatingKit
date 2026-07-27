@@ -20,7 +20,7 @@ use EloquentWorks\RatingKit\Support\Math;
 class WengLinAlgorithm implements RatingAlgorithm
 {
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function __construct(protected array $options = []) {}
 
@@ -57,7 +57,7 @@ class WengLinAlgorithm implements RatingAlgorithm
     /**
      * Rate a match and return the resulting rating changes for each competitor.
      *
-     * @param MatchInput $match The match input containing teams and their competitors.
+     * @param  MatchInput  $match  The match input containing teams and their competitors.
      * @return RatingBatch The batch of rating changes resulting from the match.
      */
     public function rate(MatchInput $match): RatingBatch
@@ -145,7 +145,7 @@ class WengLinAlgorithm implements RatingAlgorithm
     /**
      * Calculate the weighted average rating of a team based on its competitors' ratings and weights.
      *
-     * @param TeamInput $team The team for which to calculate the rating.
+     * @param  TeamInput  $team  The team for which to calculate the rating.
      * @return float The calculated weighted average rating of the team.
      */
     protected function teamRating(TeamInput $team): float
@@ -163,7 +163,7 @@ class WengLinAlgorithm implements RatingAlgorithm
     /**
      * Calculate the variance of a team's ratings based on its competitors' rating deviations and weights.
      *
-     * @param TeamInput $team The team for which to calculate the variance.
+     * @param  TeamInput  $team  The team for which to calculate the variance.
      * @return float The calculated variance of the team's ratings.
      */
     protected function teamVariance(TeamInput $team): float

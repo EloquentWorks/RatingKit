@@ -9,6 +9,4 @@ use InvalidArgumentException;
  *
  * Represents an exception thrown when an invalid match is encountered.
  */
-class InvalidMatch extends InvalidArgumentException
-{
-}
+class InvalidMatch extends InvalidArgumentException {}

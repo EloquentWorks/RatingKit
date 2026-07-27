@@ -9,6 +9,4 @@ use RuntimeException;
  *
  * Represents an exception that is thrown when an unsafe rollback operation is attempted.
  */
-class UnsafeRollback extends RuntimeException
-{
-}
+class UnsafeRollback extends RuntimeException {}

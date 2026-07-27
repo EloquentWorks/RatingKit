@@ -25,11 +25,10 @@ class DwzAlgorithm extends EloAlgorithm
     /**
      * Calculate the K-factor for a given match between two teams.
      *
-     * @param TeamInput $left The left team input data.
-     * @param TeamInput $right The right team input data.
-     * @param float $leftRating The rating of the left team.
-     * @param float $rightRating The rating of the right team.
-     *
+     * @param  TeamInput  $left  The left team input data.
+     * @param  TeamInput  $right  The right team input data.
+     * @param  float  $leftRating  The rating of the left team.
+     * @param  float  $rightRating  The rating of the right team.
      * @return float Returns the calculated K-factor.
      */
     protected function kFactor(TeamInput $left, TeamInput $right, float $leftRating, float $rightRating): float

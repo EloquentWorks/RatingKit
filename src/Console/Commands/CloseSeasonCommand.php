@@ -17,7 +17,7 @@ class CloseSeasonCommand extends Command
      * @var string
      */
     protected $signature = 'rating-kit:close-season {season : Season ID or slug} {--no-snapshot : Do not capture a final leaderboard}';
-    
+
     /**
      * The console command description.
      *
@@ -28,7 +28,7 @@ class CloseSeasonCommand extends Command
     /**
      * Execute the console command.
      *
-     * @param RatingKitManager $ratingKit The rating kit manager instance.
+     * @param  RatingKitManager  $ratingKit  The rating kit manager instance.
      * @return int Returns the exit status code.
      */
     public function handle(RatingKitManager $ratingKit): int

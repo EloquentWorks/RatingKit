@@ -5,6 +5,7 @@ namespace EloquentWorks\RatingKit\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 
 /**
  * Represents a rating season in the application.
@@ -13,9 +14,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string $name
  * @property string $slug
  * @property string $pool
- * @property \Illuminate\Support\Carbon|null $starts_at
- * @property \Illuminate\Support\Carbon|null $ends_at
- * @property \Illuminate\Support\Carbon|null $closed_at
+ * @property Carbon|null $starts_at
+ * @property Carbon|null $ends_at
+ * @property Carbon|null $closed_at
  * @property array<string, mixed>|null $metadata
  */
 class RatingSeason extends Model
@@ -72,18 +73,15 @@ class RatingSeason extends Model
     /**
      * Scope a query to only include open seasons.
      *
-     * @param Builder<RatingSeason> $query
-     * @return void
+     * @param  Builder<RatingSeason>  $query
      */
     public function scopeOpen(Builder $query): void
     {
         $query->whereNull('closed_at');
     }
-    
+
     /**
      * Determine if the season is open.
-     *
-     * @return bool
      */
     public function isOpen(): bool
     {

@@ -13,8 +13,8 @@ use Traversable;
 final readonly class RatingBatch implements Countable, IteratorAggregate
 {
     /**
-     * @param array<string, RatingChange> $changes
-     * @param array<string, mixed> $metadata
+     * @param  array<string, RatingChange>  $changes
+     * @param  array<string, mixed>  $metadata
      */
     public function __construct(
         public array $changes,
@@ -24,8 +24,7 @@ final readonly class RatingBatch implements Countable, IteratorAggregate
     /**
      * Get the rating change for a specific competitor.
      *
-     * @param string $key The key of the competitor
-     *
+     * @param  string  $key  The key of the competitor
      * @return RatingChange The rating change for the specified competitor
      *
      * @throws \OutOfBoundsException If no rating change exists for the specified competitor

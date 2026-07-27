@@ -14,7 +14,7 @@ class MatchRated
     /**
      * Create a new event instance.
      *
-     * @param \EloquentWorks\RatingKit\Models\RatingMatch $match The match that has been rated
+     * @param  RatingMatch  $match  The match that has been rated
      */
     public function __construct(public RatingMatch $match) {}
 }

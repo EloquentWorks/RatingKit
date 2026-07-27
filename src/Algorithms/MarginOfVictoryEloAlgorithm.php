@@ -24,13 +24,12 @@ class MarginOfVictoryEloAlgorithm extends EloAlgorithm
     /**
      * Calculate the delta for a pair of teams, taking into account the margin of victory.
      *
-     * @param TeamInput $left The left team input
-     * @param TeamInput $right The right team input
-     * @param float $actual The actual score
-     * @param float $expected The expected score
-     * @param float $leftRating The rating of the left team
-     * @param float $rightRating The rating of the right team
-     *
+     * @param  TeamInput  $left  The left team input
+     * @param  TeamInput  $right  The right team input
+     * @param  float  $actual  The actual score
+     * @param  float  $expected  The expected score
+     * @param  float  $leftRating  The rating of the left team
+     * @param  float  $rightRating  The rating of the right team
      * @return float Returns the adjusted delta value
      */
     protected function pairDelta(

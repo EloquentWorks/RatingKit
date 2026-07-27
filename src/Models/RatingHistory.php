@@ -27,8 +27,6 @@ class RatingHistory extends Model
 
     /**
      * Get the table name for the rating history model.
-     *
-     * @return string
      */
     public function getTable(): string
     {

@@ -10,8 +10,8 @@ use Illuminate\Database\Eloquent\Model;
 final readonly class Team
 {
     /**
-     * @param list<Participant|Model> $participants
-     * @param array<string, mixed> $metadata
+     * @param  list<Participant|Model>  $participants
+     * @param  array<string, mixed>  $metadata
      */
     public function __construct(
         public array $participants,

@@ -10,8 +10,8 @@ namespace EloquentWorks\RatingKit\Data;
 final readonly class TeamInput
 {
     /**
-     * @param list<CompetitorInput> $competitors
-     * @param array<string, mixed> $metadata
+     * @param  list<CompetitorInput>  $competitors
+     * @param  array<string, mixed>  $metadata
      */
     public function __construct(
         public array $competitors,
@@ -42,8 +42,7 @@ final readonly class TeamInput
     /**
      * Determine if this team is drawn with another team.
      *
-     * @param TeamInput $other The other team to compare against.
-     *
+     * @param  TeamInput  $other  The other team to compare against.
      * @return bool Returns true if the teams are drawn, false otherwise.
      */
     public function isDrawnWith(self $other): bool

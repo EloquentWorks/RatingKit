@@ -6,6 +6,7 @@ use EloquentWorks\RatingKit\Enums\MatchStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 
 /**
  * Represents a rating match in the system.
@@ -18,9 +19,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property array<string, mixed>|null $algorithm_options
  * @property int|null $season_id
  * @property MatchStatus $status
- * @property \Illuminate\Support\Carbon $occurred_at
- * @property \Illuminate\Support\Carbon|null $processed_at
- * @property \Illuminate\Support\Carbon|null $voided_at
+ * @property Carbon $occurred_at
+ * @property Carbon|null $processed_at
+ * @property Carbon|null $voided_at
  * @property string|null $void_reason
  * @property array<string, mixed>|null $metadata
  */
@@ -31,8 +32,6 @@ class RatingMatch extends Model
 
     /**
      * Get the table name for the rating match model.
-     *
-     * @return string
      */
     public function getTable(): string
     {
@@ -97,8 +96,6 @@ class RatingMatch extends Model
 
     /**
      * Determine if the match has been processed.
-     *
-     * @return bool
      */
     public function isProcessed(): bool
     {
@@ -107,8 +104,6 @@ class RatingMatch extends Model
 
     /**
      * Determine if the match has been voided.
-     *
-     * @return bool
      */
     public function isVoided(): bool
     {

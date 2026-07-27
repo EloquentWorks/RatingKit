@@ -10,8 +10,8 @@ namespace EloquentWorks\RatingKit\Data;
 final readonly class MatchInput
 {
     /**
-     * @param list<TeamInput> $teams
-     * @param array<string, mixed> $metadata
+     * @param  list<TeamInput>  $teams
+     * @param  array<string, mixed>  $metadata
      */
     public function __construct(
         public array $teams,

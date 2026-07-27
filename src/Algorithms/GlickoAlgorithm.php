@@ -17,7 +17,7 @@ use EloquentWorks\RatingKit\Support\Math;
 class GlickoAlgorithm implements RatingAlgorithm
 {
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function __construct(protected array $options = []) {}
 
@@ -54,7 +54,7 @@ class GlickoAlgorithm implements RatingAlgorithm
     /**
      * Rate a match and return the rating changes for each competitor.
      *
-     * @param MatchInput $match The match input containing teams and competitors.
+     * @param  MatchInput  $match  The match input containing teams and competitors.
      * @return RatingBatch Returns a batch of rating changes for each competitor.
      */
     public function rate(MatchInput $match): RatingBatch
@@ -91,7 +91,7 @@ class GlickoAlgorithm implements RatingAlgorithm
     }
 
     /**
-     * @param list<array{rating: float, deviation: float, score: float}> $opponents
+     * @param  list<array{rating: float, deviation: float, score: float}>  $opponents
      */
     protected function rateCompetitor(CompetitorInput $competitor, array $opponents): RatingChange
     {
@@ -143,7 +143,7 @@ class GlickoAlgorithm implements RatingAlgorithm
     /**
      * Calculate the aggregated rating for a team based on its competitors.
      *
-     * @param TeamInput $team The team input containing competitors.
+     * @param  TeamInput  $team  The team input containing competitors.
      * @return float Returns the aggregated rating for the team.
      */
     protected function teamRating(TeamInput $team): float
@@ -166,7 +166,7 @@ class GlickoAlgorithm implements RatingAlgorithm
     /**
      * Calculate the aggregated deviation for a team based on its competitors.
      *
-     * @param TeamInput $team The team input containing competitors.
+     * @param  TeamInput  $team  The team input containing competitors.
      * @return float Returns the aggregated deviation for the team.
      */
     protected function teamDeviation(TeamInput $team): float

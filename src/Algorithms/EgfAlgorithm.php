@@ -24,11 +24,10 @@ class EgfAlgorithm extends EloAlgorithm
     /**
      * Calculates the K-factor for the given teams and their ratings.
      *
-     * @param TeamInput $left The left team input.
-     * @param TeamInput $right The right team input.
-     * @param float $leftRating The rating of the left team.
-     * @param float $rightRating The rating of the right team.
-     *
+     * @param  TeamInput  $left  The left team input.
+     * @param  TeamInput  $right  The right team input.
+     * @param  float  $leftRating  The rating of the left team.
+     * @param  float  $rightRating  The rating of the right team.
      * @return float The calculated K-factor.
      */
     protected function kFactor(TeamInput $left, TeamInput $right, float $leftRating, float $rightRating): float

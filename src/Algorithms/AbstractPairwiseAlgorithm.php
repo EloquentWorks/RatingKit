@@ -21,7 +21,7 @@ use EloquentWorks\RatingKit\Support\Math;
 abstract class AbstractPairwiseAlgorithm implements RatingAlgorithm
 {
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function __construct(protected array $options = []) {}
 
@@ -34,7 +34,7 @@ abstract class AbstractPairwiseAlgorithm implements RatingAlgorithm
     {
         return true;
     }
-    
+
     /**
      * Determine if the algorithm supports matches with multiple teams.
      *
@@ -88,7 +88,7 @@ abstract class AbstractPairwiseAlgorithm implements RatingAlgorithm
             $teamDelta = $comparisons[$teamIndex] > 0
                 ? $teamDeltas[$teamIndex] / $comparisons[$teamIndex]
                 : 0.0;
-            
+
             // Iterate over each competitor in the team to calculate their individual rating changes based on the
             // team's delta and their participation factor.
             foreach ($team->competitors as $competitor) {
