@@ -1,19 +1,43 @@
-# Contributor Covenant Code of Conduct 🤝
+# 🤝 Code of Conduct
 
-## Our Pledge
+## 🌟 Our Pledge
 
-We pledge to make participation in Laravel RatingKit welcoming and harassment-free for everyone.
+We want this project to be a welcoming and respectful place for everyone.
 
-## Our Standards
+Anyone contributing to this project is expected to treat others with kindness, patience, and professionalism.
 
-Positive behavior includes empathy, respectful feedback, collaborative problem solving, and accepting responsibility for mistakes.
+## ✅ Expected Behavior
 
-Unacceptable behavior includes harassment, personal attacks, discriminatory language, deliberate disruption, and publishing another person's private information.
+Examples of good behavior include:
 
-## Enforcement
+- Being respectful in discussions
+- Giving helpful feedback
+- Accepting constructive criticism
+- Staying focused on the project
+- Helping others learn and improve
 
-Project maintainers may remove, edit, or reject contributions and communications that violate this code. Serious or repeated violations may result in a temporary or permanent ban from project spaces.
+## 🚫 Unacceptable Behavior
 
-## Attribution
+Examples of unacceptable behavior include:
 
-This code is based on the Contributor Covenant, version 2.1.
+- Harassment, insults, or personal attacks
+- Discriminatory language or behavior
+- Trolling or intentionally disruptive comments
+- Sharing private information without permission
+- Any behavior that makes the project unsafe or unwelcoming
+
+## 📨 Reporting Issues
+
+If you see behavior that violates this Code of Conduct, please contact the project maintainer privately.
+
+Maintainers may remove comments, close issues, reject pull requests, or block users who violate this Code of Conduct.
+
+## 🌐 Scope
+
+This Code of Conduct applies to all project spaces, including issues, pull requests, discussions, and other community interactions.
+
+## ⚖️ Enforcement
+
+Maintainers are responsible for keeping the project respectful and productive.
+
+Thank you for helping make this project better.
