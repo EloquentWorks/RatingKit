@@ -23,9 +23,13 @@ class ThurstoneMostellerAlgorithm extends AbstractPairwiseAlgorithm
     }
 
     /**
-     * Returns the name of this algorithm.
+     * Calculate the expected score for a pair of teams based on their ratings.
      *
-     * @return string The name of the Thurstone-Mosteller algorithm.
+     * @param  float  $leftRating  The rating of the left team.
+     * @param  float  $rightRating  The rating of the right team.
+     * @param  TeamInput  $left  The left team input.
+     * @param  TeamInput  $right  The right team input.
+     * @return float The expected score for the left team against the right team.
      */
     protected function expected(float $leftRating, float $rightRating, TeamInput $left, TeamInput $right): float
     {

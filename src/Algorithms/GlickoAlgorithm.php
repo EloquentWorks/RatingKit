@@ -32,9 +32,9 @@ class GlickoAlgorithm implements RatingAlgorithm
     }
 
     /**
-     * Get the display name for this rating algorithm.
+     * Determine if this rating algorithm supports teams.
      *
-     * @return string Returns the display name for this rating algorithm.
+     * @return bool Returns true if this rating algorithm supports teams, false otherwise.
      */
     public function supportsTeams(): bool
     {

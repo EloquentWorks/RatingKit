@@ -20,9 +20,9 @@ interface RatingAlgorithm
     public function key(): string;
 
     /**
-     * Get the name of this rating algorithm.
+     * Determine if this rating algorithm supports teams.
      *
-     * @return string The name of this rating algorithm
+     * @return bool Returns true if the algorithm supports teams, false otherwise
      */
     public function supportsTeams(): bool;
 
