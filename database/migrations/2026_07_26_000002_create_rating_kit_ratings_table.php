@@ -57,7 +57,7 @@ return new class extends Migration
 
             // Additional metadata for the rating
             $table->json('metadata')->nullable();
-            
+
             // Timestamps for created_at and updated_at
             $table->timestamps();
 

@@ -240,7 +240,7 @@ trait HasRatings
     ): float {
         $algorithm = $this->ratingKitAlgorithm($algorithm);
         $rating = $this->ratingFor($pool, $algorithm, $seasonId, false);
-        $value = $rating?->rating ?? (float) config('rating-kit.initial.rating', 1500.0);
+        $value = $rating->rating ?? (float) config('rating-kit.initial.rating', 1500.0);
         $deviation = $rating?->deviation ?? (float) config('rating-kit.initial.deviation', 350.0);
         $direction = (string) config("rating-kit.algorithm_directions.{$algorithm}", 'desc');
 

@@ -51,7 +51,7 @@ return [
     | the accuracy of the rating system.
     |
     */
-    
+
     'initial' => [
         'rating' => 1500.0,
         'deviation' => 350.0,
@@ -72,7 +72,7 @@ return [
     */
 
     'provisional_games' => 10,
-    
+
     /*
     |--------------------------------------------------------------------------
     | Rating Floor and Ceiling

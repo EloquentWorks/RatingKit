@@ -2,6 +2,7 @@
 
 namespace EloquentWorks\RatingKit\Facades;
 
+use EloquentWorks\RatingKit\Data\Participant;
 use EloquentWorks\RatingKit\Data\RecordMatch;
 use EloquentWorks\RatingKit\Data\Team;
 use EloquentWorks\RatingKit\Models\LeaderboardSnapshot;
@@ -20,8 +21,8 @@ use Illuminate\Support\Facades\Facade;
  * @method static AlgorithmRegistry algorithms()
  * @method static RatingMatch record(RecordMatch $request)
  * @method static RatingMatch oneVsOne(Model $left, Model $right, string $result = 'left', ?string $algorithm = null, ?string $pool = null, ?int $seasonId = null, ?string $externalId = null, array<string, mixed> $metadata = [])
- * @method static RatingMatch teamVsTeam(array $left, array $right, string $result = 'left', ?string $algorithm = null, ?string $pool = null, ?int $seasonId = null, array<string, mixed> $metadata = [])
- * @method static RatingMatch freeForAll(array $placements, ?string $algorithm = null, ?string $pool = null, ?int $seasonId = null, array<string, mixed> $metadata = [])
+ * @method static RatingMatch teamVsTeam(list<Model|Participant> $left, list<Model|Participant> $right, string $result = 'left', ?string $algorithm = null, ?string $pool = null, ?int $seasonId = null, array<string, mixed> $metadata = [])
+ * @method static RatingMatch freeForAll(array<int, Model|Participant|array{participant: Model|Participant, rank: int, score?: float|null}> $placements, ?string $algorithm = null, ?string $pool = null, ?int $seasonId = null, array<string, mixed> $metadata = [])
  * @method static Collection<int, array{rank: int, rating: Rating, score: float}> leaderboard(?string $pool = null, ?string $algorithm = null, ?int $seasonId = null, int $limit = 100, bool $includeProvisional = false, bool $conservative = false)
  * @method static list<array{team: int, rating: float, probability: float}> predict(list<Team> $teams, ?string $pool = null, ?string $algorithm = null, ?int $seasonId = null)
  * @method static float matchQuality(list<Team> $teams, ?string $pool = null, ?string $algorithm = null, ?int $seasonId = null)

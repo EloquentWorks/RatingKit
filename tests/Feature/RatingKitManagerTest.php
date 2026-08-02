@@ -25,7 +25,7 @@ class RatingKitManagerTest extends TestCase
 
         self::assertSame(MatchStatus::Processed, $match->status);
         self::assertCount(4, $match->participants);
-        self::assertSame(32.0, $match->algorithm_options['k_factor']);
+        self::assertSame(32.0, (float) $match->algorithm_options['k_factor']);
         self::assertGreaterThan(1500.0, $players[0]->currentRating('chess.teams.blitz', 'elo'));
         self::assertLessThan(1500.0, $players[2]->currentRating('chess.teams.blitz', 'elo'));
     }

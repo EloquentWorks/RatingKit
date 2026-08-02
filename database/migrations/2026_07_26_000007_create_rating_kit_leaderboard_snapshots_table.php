@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create(config('rating-kit.tables.leaderboard_snapshots', 'rating_kit_leaderboard_snapshots'), function (Blueprint $table): void {
             // Primary key for the leaderboard snapshots table
             $table->id();
-            
+
             // Unique identifier for the leaderboard snapshot, using UUIDs for better uniqueness across distributed systems
             $table->string('pool')->index();
 

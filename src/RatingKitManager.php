@@ -41,7 +41,7 @@ class RatingKitManager
     /**
      * Create a new RatingKitManager instance.
      *
-     * @param  AlgorithmRegistry  $algorithms The algorithm registry instance
+     * @param  AlgorithmRegistry  $algorithms  The algorithm registry instance
      * @return void
      */
     public function __construct(protected AlgorithmRegistry $algorithms) {}
@@ -59,8 +59,9 @@ class RatingKitManager
     /**
      * Record a match and update player ratings accordingly.
      *
-     * @param  RecordMatch  $request The request containing match details and teams
+     * @param  RecordMatch  $request  The request containing match details and teams
      * @return RatingMatch The recorded match instance with updated ratings
+     *
      * @throws InvalidMatch If the match is invalid based on the algorithm's capabilities
      */
     public function record(RecordMatch $request): RatingMatch
@@ -267,15 +268,7 @@ class RatingKitManager
     /**
      * Convenience wrapper for one player against another.
      *
-     * @param  Model  $left
-     * @param  Model  $right
-     * @param  string  $result
-     * @param  string|null  $algorithm
-     * @param  string|null  $pool
-     * @param  int|null  $seasonId
-     * @param  string|null  $externalId
      * @param  array<string, mixed>  $metadata
-     * @return RatingMatch
      */
     public function oneVsOne(
         Model $left,
@@ -314,12 +307,7 @@ class RatingKitManager
      *
      * @param  list<Model|Participant>  $left
      * @param  list<Model|Participant>  $right
-     * @param  string  $result
-     * @param  string|null  $algorithm
-     * @param  string|null  $pool
-     * @param  int|null  $seasonId
      * @param  array<string, mixed>  $metadata
-     * @return RatingMatch
      */
     public function teamVsTeam(
         array $left,
@@ -355,11 +343,7 @@ class RatingKitManager
      * Convenience wrapper for a free-for-all match with any number of players.
      *
      * @param  array<int, Model|Participant|array{participant: Model|Participant, rank: int, score?: float|null}>  $placements
-     * @param  string|null  $algorithm
-     * @param  string|null  $pool
-     * @param  int|null  $seasonId
      * @param  array<string, mixed>  $metadata
-     * @return RatingMatch
      */
     public function freeForAll(
         array $placements,
@@ -392,12 +376,6 @@ class RatingKitManager
     /**
      * Get the current leaderboard for a given pool and algorithm.
      *
-     * @param  string|null  $pool
-     * @param  string|null  $algorithm
-     * @param  int|null  $seasonId
-     * @param  int  $limit
-     * @param  bool  $includeProvisional
-     * @param  bool  $conservative
      * @return Collection<int, array{rank: int, rating: Rating, score: float}>
      */
     public function leaderboard(
@@ -457,7 +435,7 @@ class RatingKitManager
 
             // Return an array containing the rank, rating, and score for the current rating
             return [
-                'rank' => $lastRank,
+                'rank' => (int) $lastRank,
                 'rating' => $rating,
                 'score' => $score,
             ];
@@ -468,9 +446,6 @@ class RatingKitManager
      * Predict the probability of each team winning based on their current ratings.
      *
      * @param  list<Team>  $teams
-     * @param  string|null  $pool
-     * @param  string|null  $algorithm
-     * @param  int|null  $seasonId
      * @return array<int, array{team: int, rating: float, probability: float}>
      */
     public function predict(array $teams, ?string $pool = null, ?string $algorithm = null, ?int $seasonId = null): array
@@ -490,7 +465,7 @@ class RatingKitManager
                 $rating = $this->ratingForModel($participant->rateable, $pool, $algorithm, $seasonId, false);
 
                 // If the participant has a rating, return it; otherwise, return the initial rating from the configuration
-                return $rating?->rating ?? (float) config('rating-kit.initial.rating', 1500.0);
+                return $rating->rating ?? (float) config('rating-kit.initial.rating', 1500.0);
             }, $participants)) / count($participants);
 
             // Store the calculated team rating and strength for each team in the respective arrays
@@ -526,9 +501,6 @@ class RatingKitManager
      * Return a normalized measure of how evenly matched the teams are.
      *
      * @param  list<Team>  $teams
-     * @param  string|null  $pool
-     * @param  string|null  $algorithm
-     * @param  int|null  $seasonId
      * @return float 0.0 = very uneven, 1.0 = perfectly even
      */
     public function matchQuality(
@@ -556,9 +528,6 @@ class RatingKitManager
     /**
      * Summarize one rating pool without loading rateable models.
      *
-     * @param  string|null  $pool
-     * @param  string|null  $algorithm
-     * @param  int|null  $seasonId
      * @return array{count: int, established: int, provisional: int, average: float|null, minimum: float|null, maximum: float|null, median: float|null}
      */
     public function poolStatistics(
@@ -574,7 +543,7 @@ class RatingKitManager
             ->where('algorithm', $algorithm)
             ->where('season_key', $seasonId ?? 0)
             ->get(['rating', 'provisional']);
-        
+
         // Count the number of ratings in the specified pool, algorithm, and season
         $count = $ratings->count();
 
@@ -614,10 +583,11 @@ class RatingKitManager
     /**
      * Void a previously processed match and revert all ratings to their previous state.
      *
-     * @param  RatingMatch  $match The match instance to be voided
-     * @param  string|null  $reason An optional reason for voiding the match
-     * @throws UnsafeRollback if the match is not the latest result for every participant
+     * @param  RatingMatch  $match  The match instance to be voided
+     * @param  string|null  $reason  An optional reason for voiding the match
      * @return RatingMatch The updated match instance after voiding
+     *
+     * @throws UnsafeRollback if the match is not the latest result for every participant
      */
     public function void(RatingMatch $match, ?string $reason = null): RatingMatch
     {
@@ -699,12 +669,6 @@ class RatingKitManager
 
     /**
      * Snapshot the current leaderboard for a given pool and algorithm.
-     *
-     * @param  string|null  $pool
-     * @param  string|null  $algorithm
-     * @param  int|null  $seasonId
-     * @param  int  $limit
-     * @return LeaderboardSnapshot
      */
     public function snapshotLeaderboard(
         ?string $pool = null,
@@ -745,12 +709,12 @@ class RatingKitManager
     /**
      * Create a new rating season.
      *
-     * @param  string  $name The name of the season.
-     * @param  string  $slug A unique slug for the season.
-     * @param  string|null  $pool The rating pool for the season (optional).
-     * @param  mixed|null  $startsAt The start date of the season (optional).
-     * @param  mixed|null  $endsAt The end date of the season (optional).
-     * @param  array<string, mixed>  $metadata Additional metadata for the season (optional).
+     * @param  string  $name  The name of the season.
+     * @param  string  $slug  A unique slug for the season.
+     * @param  string|null  $pool  The rating pool for the season (optional).
+     * @param  mixed|null  $startsAt  The start date of the season (optional).
+     * @param  mixed|null  $endsAt  The end date of the season (optional).
+     * @param  array<string, mixed>  $metadata  Additional metadata for the season (optional).
      * @return RatingSeason Returns the newly created RatingSeason instance.
      */
     public function createSeason(
@@ -777,8 +741,7 @@ class RatingKitManager
     /**
      * Close a season and optionally snapshot the leaderboard.
      *
-     * @param  RatingSeason  $season
-     * @param  bool  $snapshot Whether to snapshot the leaderboard after closing the season.
+     * @param  bool  $snapshot  Whether to snapshot the leaderboard after closing the season.
      * @return RatingSeason Returns the updated season instance.
      */
     public function closeSeason(RatingSeason $season, bool $snapshot = true): RatingSeason
@@ -818,8 +781,6 @@ class RatingKitManager
     /**
      * Decay ratings for inactive players based on the configured decay settings.
      *
-     * @param  string|null  $pool
-     * @param  string|null  $algorithm
      * @return int Returns the number of ratings that were decayed.
      */
     public function decayInactive(?string $pool = null, ?string $algorithm = null): int
@@ -895,14 +856,7 @@ class RatingKitManager
     /**
      * Adjust a model's rating by a specific amount, clamped to the configured minimum and maximum if set.
      *
-     * @param  Model  $model
-     * @param  float  $amount
-     * @param  string  $reason
-     * @param  string|null  $pool
-     * @param  string|null  $algorithm
-     * @param  int|null  $seasonId
      * @param  array<string, mixed>  $metadata
-     * @return Rating
      */
     public function adjust(
         Model $model,
@@ -936,14 +890,7 @@ class RatingKitManager
     /**
      * Set a model's rating to a specific value, clamped to the configured minimum and maximum if set.
      *
-     * @param  Model  $model
-     * @param  float  $value
-     * @param  string  $reason
-     * @param  string|null  $pool
-     * @param  string|null  $algorithm
-     * @param  int|null  $seasonId
      * @param  array<string, mixed>  $metadata
-     * @return Rating
      */
     public function setRating(
         Model $model,
@@ -1010,13 +957,6 @@ class RatingKitManager
 
     /**
      * Reset a model's rating to the initial value.
-     *
-     * @param  Model  $model
-     * @param  string|null  $pool
-     * @param  string|null  $algorithm
-     * @param  int|null  $seasonId
-     * @param  string  $reason
-     * @return Rating
      */
     public function resetRating(
         Model $model,
@@ -1037,14 +977,6 @@ class RatingKitManager
 
     /**
      * Return the rank of a given model in a given pool and algorithm.
-     *
-     * @param  Model  $model
-     * @param  string|null  $pool
-     * @param  string|null  $algorithm
-     * @param  int|null  $seasonId
-     * @param  bool  $includeProvisional
-     * @param  bool  $conservative
-     * @return int|null
      */
     public function rankOf(
         Model $model,
@@ -1099,13 +1031,6 @@ class RatingKitManager
 
     /**
      * Get the rating record for a given model, creating it if necessary.
-     *
-     * @param  class-string<Model>  $model
-     * @param  string|null  $pool
-     * @param  string|null  $algorithm
-     * @param  int|null  $seasonId
-     * @param  bool  $create
-     * @return Rating|null
      */
     public function ratingForModel(
         Model $model,
@@ -1173,14 +1098,13 @@ class RatingKitManager
         }
 
         // Return the normalized teams as a zero-based array.
-        return array_values($teams);
+        return $teams;
     }
 
     /**
      * Check if any team in the list contains multiple participants.
      *
-     * @param list<Team> $teams
-     * @return bool
+     * @param  list<Team>  $teams
      */
     protected function containsMultiPlayerTeam(array $teams): bool
     {
@@ -1198,12 +1122,7 @@ class RatingKitManager
     /**
      * Find or create a rating for a participant.
      *
-     * @param class-string<Rating> $ratingClass
-     * @param Participant $participant
-     * @param string $pool
-     * @param string $algorithm
-     * @param int|null $seasonId
-     * @return Rating
+     * @param  class-string<Rating>  $ratingClass
      */
     protected function findOrCreateRating(
         string $ratingClass,
@@ -1241,8 +1160,6 @@ class RatingKitManager
      * Determine the outcome for a given team based on its rank and the ranks of other teams.
      *
      * @param  list<Team>  $teams
-     * @param  int  $minimumRank
-     * @param  int  $firstPlaceCount
      * @return string Returns 'win', 'draw', or 'loss' based on the team's performance.
      */
     protected function outcomeFor(Team $team, array $teams, int $minimumRank, int $firstPlaceCount): string
@@ -1264,8 +1181,6 @@ class RatingKitManager
     /**
      * Update the statistics for a rating based on the outcome of a match.
      *
-     * @param Rating $rating
-     * @param string $outcome
      * @return array{wins: int, draws: int, losses: int, streak: int}
      */
     protected function updatedStats(Rating $rating, string $outcome): array
@@ -1285,8 +1200,6 @@ class RatingKitManager
     /**
      * Revert the statistics for a rating based on the outcome of a match.
      *
-     * @param Rating $rating
-     * @param string $outcome
      * @return array{wins: int, draws: int, losses: int}
      */
     protected function revertedStats(Rating $rating, string $outcome): array
@@ -1300,9 +1213,6 @@ class RatingKitManager
 
     /**
      * Dispatch an event after the current database transaction has committed.
-     *
-     * @param  object  $event
-     * @return void
      */
     protected function afterCommit(object $event): void
     {

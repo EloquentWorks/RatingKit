@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create(config('rating-kit.tables.teams', 'rating_kit_teams'), function (Blueprint $table): void {
             // Primary key for the teams table
             $table->id();
-            
+
             // Foreign key to the matches table, allowing for efficient querying
             $table->foreignId('match_id')->index();
 

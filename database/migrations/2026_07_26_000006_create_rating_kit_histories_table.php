@@ -25,7 +25,7 @@ return new class extends Migration
             // Rating before and after the rating change, with precision and scale specified
             $table->decimal('rating_before', 14, 6);
             $table->decimal('rating_after', 14, 6);
-            
+
             // Deviation before and after the rating change, with precision and scale specified
             $table->decimal('deviation_before', 14, 6);
             $table->decimal('deviation_after', 14, 6);
