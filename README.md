@@ -450,8 +450,12 @@ Please review [SECURITY.md](SECURITY.md) for responsible vulnerability reporting
 
 ## 🤝 Contributing
 
-Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
+See [CONTRIBUTING.md](CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
+
+## 🙏 Credits
+
+Built by Eloquent Works.
 
 ## 📄 License
 
-Laravel RatingKit is open-source software licensed under the [MIT license](LICENSE).
+Laravel RatingKit is open-source software licensed under the [MIT License](LICENSE).
