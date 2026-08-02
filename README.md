@@ -2,7 +2,7 @@
 
 [![Tests](https://github.com/EloquentWorks/RatingKit/actions/workflows/tests.yml/badge.svg)](https://github.com/EloquentWorks/RatingKit/actions/workflows/tests.yml)
 [![Latest Release](https://img.shields.io/github/v/release/EloquentWorks/RatingKit)](https://github.com/EloquentWorks/RatingKit/releases)
-[![License](https://img.shields.io/github/license/EloquentWorks/RatingKit)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 Laravel RatingKit is a comprehensive, extensible rating engine for Laravel applications.
 
